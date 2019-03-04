@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CreateUser from './CreateUser';
 
 class AddUser extends Component {
 
@@ -15,9 +16,12 @@ class AddUser extends Component {
   render() {
 console.log("this.state.addUserToogle: ", this.state.addUserToogle);
     return (
-      <button
-        onClick={this.toggle}
-      >Add User</button>
+      <section>
+        {this.state.addUserToogle ? <CreateUser /> : null}
+        <button
+          onClick={this.toggle}
+        >{!this.state.addUserToogle ? 'Add User' : 'Hide form'}</button>
+      </section>
     );
   }
 }
