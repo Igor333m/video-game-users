@@ -22,21 +22,32 @@ class CreateUser extends Component {
     const value = target.value;
     const name = target.name;
 
-    this.setState({
-      [name]: {
-        value: value,
-        isEmpty: false
-      }
-    });
+    if (value) {
+      this.setState({
+        [name]: {
+          value: value,
+          isEmpty: false
+        }
+      });
+    }else {
+      this.setState({
+        [name]: {
+          value: null,
+          isEmpty: true
+        }
+      });
+    }
   }
 
   addUser = event => {
     event.preventDefault();
     for (const key in this.state) {
       if (this.state[key].isEmpty) {
-        alert(`${key} is required!`);
+        return alert(`${key} is required!`);
       }
     }
+
+    alert("KUL");
   }
 
   render() {
