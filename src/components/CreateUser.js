@@ -3,30 +3,40 @@ import React, { Component } from 'react';
 class CreateUser extends Component {
 
   state = {
-    firstName: null,
-    lastName: null,
-    userName: null
+    firstName: {
+      value: null,
+      isEmpty: true
+    },
+    lastName: {
+      value: null,
+      isEmpty: true
+    },
+    userName: {
+      value: null,
+      isEmpty: true
+    }
   }
 
   handleInputChange = (event) => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-console.log("target: ", target);
-console.log("value: ", value);
 
-  if (!name) {  
-console.log("name: ", name);
-    }else {
-      this.setState({
-        [name]: value
-      }); 
-    }
+    this.setState({
+      [name]: {
+        value: value,
+        isEmpty: false
+      }
+    });
   }
 
   addUser = event => {
     event.preventDefault();
-console.log('this.state: ', this.state);
+    for (const key in this.state) {
+      if (this.state[key].isEmpty) {
+        alert(`${key} is required!`);
+      }
+    }
   }
 
   render() {
