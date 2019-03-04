@@ -24,8 +24,7 @@ We should also have a button that lets us toggle between showing and hiding
 the number of games the users have played.
 For example, the button can start out as
 ```Hide the Number of Games Played``` and the app can display
-```username1
-played 0 games.``` Clicking that button should change the button text to
+```username1 played 0 games.``` Clicking that button should change the button text to
 ```Show the Number of Games Played```
 and the displayed username and score can be
 changed to
