@@ -50,6 +50,7 @@ class CreateUser extends Component {
     user.firstName = this.state.firstName.value;
     user.lastName = this.state.lastName.value;
     user.userName = this.state.userName.value;
+    user.numOfGames = 0;
     this.props.toGetUser(user)
     this.props.toggleForm()
 
