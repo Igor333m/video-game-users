@@ -8,13 +8,22 @@ class App extends Component {
     users: []
   }
 
+  addUser = (user) => {
+    this.setState(oldState => ({
+      users: [...oldState.users, user]
+    }));
+console.log(this.state);
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1>Video Game Users</h1>
         </header>
-        <AddUser />
+        <AddUser 
+          addUser={this.addUser}
+        />
       </div>
     );
   }

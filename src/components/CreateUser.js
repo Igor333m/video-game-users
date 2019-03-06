@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CreateUser extends Component {
+
+  static propTypes = {
+    toGetUser: PropTypes.func.isRequired,
+    toggleForm: PropTypes.func.isRequired
+  }
 
   state = {
     firstName: {
@@ -39,16 +45,26 @@ class CreateUser extends Component {
     }
   }
 
+  createUserObject = () => {
+    let user = {};
+    user.firstName = this.state.firstName.value;
+    user.lastName = this.state.lastName.value;
+    user.userName = this.state.userName.value;
+    this.props.toGetUser(user)
+    this.props.toggleForm()
+
+  }
+
   addUser = event => {
     event.preventDefault();
+    // Check for empty inputs
     for (const key in this.state) {
       if (this.state[key].isEmpty) {
         return alert(`${key} is required!`);
       }
     }
-
-    alert("KUL");
-  }
+    this.createUserObject();
+   }
 
   render() {
     return (
