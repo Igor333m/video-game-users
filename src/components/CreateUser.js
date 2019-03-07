@@ -5,96 +5,50 @@ class CreateUser extends Component {
 
   static propTypes = {
     toGetUser: PropTypes.func.isRequired,
-    toggleForm: PropTypes.func.isRequired
+    toggleForm: PropTypes.func.isRequired,
+    usernames: PropTypes.array.isRequired
   }
 
   state = {
-    firstName: {
-      value: null,
-      isEmpty: true
+    user: {
+      firstName: '',
+      lastName: '',
+      username: ''
     },
-    lastName: {
-      value: null,
-      isEmpty: true
-    },
-    userName: {
-      value: null,
-      isEmpty: true
-    }
+    userExists: false
   }
-
-  handleInputChange = (event) => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    if (value) {
-      this.setState({
-        [name]: {
-          value: value,
-          isEmpty: false
-        }
-      });
-    }else {
-      this.setState({
-        [name]: {
-          value: null,
-          isEmpty: true
-        }
-      });
-    }
-  }
-
-  createUserObject = () => {
-    let user = {};
-    user.firstName = this.state.firstName.value;
-    user.lastName = this.state.lastName.value;
-    user.userName = this.state.userName.value;
-    user.numOfGames = 0;
-    this.props.toGetUser(user)
-    this.props.toggleForm()
-
-  }
-
-  addUser = event => {
-    event.preventDefault();
-    // Check for empty inputs
-    for (const key in this.state) {
-      if (this.state[key].isEmpty) {
-        return alert(`${key} is required!`);
-      }
-    }
-    this.createUserObject();
-   }
 
   render() {
+    const { firstName, lastName, username } = this.state.user;
+    
     return (
-      <form>
-        <label>
-          First Name:
-          <input type="text"
-            name="firstName"
-            required
-            onChange={this.handleInputChange} />
-        </label>
-        <label>
-          Last Name:
-          <input type="text"
-            name="lastName"
-            required
-            onChange={this.handleInputChange} />
-        </label>
-        <label>
-          Username:
-          <input type="text"
-            name="userName"
-            required
-            onChange={this.handleInputChange} />
-        </label>
-        <input type="submit"
-          value="Add User"
-          onClick={this.addUser}/>
-      </form>
+      <div>
+        <h1>New User</h1>
+          <form>
+            <label>
+              First Name:
+              <input type="text"
+                name="firstName"
+                value={firstName}
+                onChange={this.handleInputChange} />
+            </label>
+            <label>
+              Last Name:
+              <input type="text"
+                name="lastName"
+                value={lastName}
+                onChange={this.handleInputChange} />
+            </label>
+            <label>
+              Username:
+              <input type="text"
+                name="userName"
+                value={username}
+                onChange={this.handleInputChange} />
+            </label>
+            <button>Add</button>
+          </form>
+      </div>
     );
   }
 }
