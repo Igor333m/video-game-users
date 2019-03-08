@@ -33,6 +33,7 @@ class AddUser extends Component {
 
     if (!userExists) {
       this.props.onAddUser(this.state.user);
+      this.resetState();
     }
 
     this.setState(() => ({
@@ -50,6 +51,17 @@ class AddUser extends Component {
         [name]: value,
       },
     }));
+  }
+
+  resetState = () => {
+    this.setState({
+      user: {
+        firstName: '',
+        lastName: '',
+        username: ''
+      },
+      userExists: false
+    });
   }
 
   isDisabled = () => {
