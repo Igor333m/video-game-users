@@ -12,9 +12,9 @@ class App extends Component {
   createContact = user => {
     user.numGamesPlayed = 0;
     this.setState(currState => ({
-      users: [...currState.users, user],
+      users: [...currState.users, user]
     }));
-  };
+  }
 
   render() {
     return (

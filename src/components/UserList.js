@@ -9,14 +9,14 @@ class UserList extends Component {
   }
 
   state = {
-    showGamesPlayed: true,
-  };
+    showGamesPlayed: true
+  }
 
   toggleGamesPlayedPanel = () => {
     this.setState(oldState => ({
-      showGamesPlayed: !oldState.showGamesPlayed,
+      showGamesPlayed: !oldState.showGamesPlayed
     }));
-  };
+  }
 
   render() {
     const { showGamesPlayed } = this.state;

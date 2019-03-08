@@ -9,11 +9,11 @@ const User = props => {
       <p>Number of Games Played: {props.showGamesPlayed ? props.user.numGamesPlayed : '*'}</p>
     </li>
   );
-};
+}
 
 User.propTypes = {
   showGamesPlayed: PropTypes.bool.isRequired,
-  user: PropTypes.object.isRequired,
-};
+  user: PropTypes.object.isRequired
+}
 
 export default User;

@@ -5,16 +5,17 @@ class AddUser extends Component {
 
   static propTypes = {
     onAddUser: PropTypes.func.isRequired,
-    users: PropTypes.array.isRequired,
+    users: PropTypes.array.isRequired
   }
+
   state = {
     user: {
       firstName: '',
       lastName: '',
-      username: '',
+      username: ''
     },
-    userExists: false,
-  };
+    userExists: false
+  }
 
   contactExists = currUsername => {
     const users = this.props.users;
@@ -24,7 +25,7 @@ class AddUser extends Component {
       }
     }
     return false;
-  };
+  }
 
   handleSubmit = event => {
     event.preventDefault();
@@ -35,9 +36,9 @@ class AddUser extends Component {
     }
 
     this.setState(() => ({
-      userExists,
+      userExists
     }));
-  };
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -49,12 +50,12 @@ class AddUser extends Component {
         [name]: value,
       },
     }));
-  };
+  }
 
   isDisabled = () => {
     const { firstName, lastName, username } = this.state.user;
     return firstName === '' || lastName === '' || username === '';
-  };
+  }
 
   render() {
     const { firstName, lastName, username } = this.state.user;
