@@ -29,3 +29,7 @@ input[type="submit"], button {
   margin: 10px auto;
   width: 300px;
 }
+
+.error {
+  color: red;
+}
