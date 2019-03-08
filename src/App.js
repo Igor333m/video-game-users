@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import AddUser from './components/AddUser';
+import UserList from './components/UserList';
 
 class App extends Component {
 
@@ -8,12 +9,12 @@ class App extends Component {
     users: []
   }
 
-  addUser = (user) => {
-    this.setState(oldState => ({
-      users: [...oldState.users, user]
+  createContact = user => {
+    user.numGamesPlayed = 0;
+    this.setState(currState => ({
+      users: [...currState.users, user],
     }));
-console.log(this.state);
-  }
+  };
 
   render() {
     return (
@@ -21,9 +22,11 @@ console.log(this.state);
         <header className="App-header">
           <h1>Video Game Users</h1>
         </header>
-        <AddUser 
-          addUser={this.addUser}
+        <AddUser
+          users={this.state.users}
+          onAddUser={this.createContact}
         />
+        <UserList users={this.state.users} />
       </div>
     );
   }
